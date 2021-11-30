@@ -1,44 +1,36 @@
-#include <iostream>
-#include <cmath>
-
+#include<iostream>
 using namespace std;
 
-int adiff(int A, int B)
+int adiff(int a, int b)
 {
-  int C;
-  if (A - B >= 0)
-  {
-    C = A - B;
-    if (C % 360 == 0)
-    {
-      C = 0;
-      return C;
-    }
-    else if (C > 180)
-    {
-      return abs(C - 360);
-    }
-    else
-    {
-      return C;
-    }
+  a = a%360;
+  b = b%360;
+  //cout << a << " " << b << endl;
+
+  if(a < 0){
+    a = 360 + a;
   }
-  else
-  {
-    C = B - A;
-    if (C % 360 == 0)
-    {
-      C = 0;
-      return C;
-    }
-    else if (C > 180)
-    {
-      return abs(C - 360);
-    }
-    else
-    {
-      return C;
-    }
+  if(b < 0){
+    b = 360 + b;
+  }
+  //cout << a << " " << b << endl;
+
+  int mn,mx;
+  if(a < b){
+    mn = a;
+    mx = b;
+  }else{
+    mn = b;
+    mx = a;
+  }
+  //cout << mn << " " << mx << endl;
+
+  if(mn+180 == mx){
+    return 180;
+  }else if(mn+180 <mx){
+    return abs(360+mn-mx);
+  }else{
+    return abs(mx-mn);
   }
 }
 
